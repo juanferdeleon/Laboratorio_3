@@ -1,67 +1,64 @@
 /**
- *Source code recreated from Lars Vogel (c) 2009, 2016 vogella GmbH
+ * Source code recreated from Lars Vogel (c) 2009, 2016 vogella GmbH
  * Version 0.7, 04.10.2016
  */
 
 public class Merge {
 
-    private int[] numbers;
-    private int[] helper;
+    private int[] infoArray;
+    private int[] tempArray;
 
     private int number;
 
     public int[] sort(int[] values) {
-        this.numbers = values;
+        this.infoArray = values;
         number = values.length;
-        this.helper = new int[number];
+        this.tempArray= new int[number];
         mergesort(0, number - 1);
-        return this.numbers;
+        return this.infoArray;
     }
 
     private void mergesort(int low, int high) {
-        // check if low is smaller than high, if not then the array is sorted
+        // Verifica si low es menor que high, sino ordena la lista.
         if (low < high) {
-            // Get the index of the element which is in the middle
+            // Obtiene el indice del valor central del arreglo.
             int middle = low + (high - low) / 2;
-            // Sort the left side of the array
+            // Ordena el lado izquierdo de la lista
             mergesort(low, middle);
-            // Sort the right side of the array
+            // Ordena el lado izquierdo de la lista
             mergesort(middle + 1, high);
-            // Combine them both
+            // Junta los dos arreglos
             merge(low, middle, high);
         }
     }
 
     private void merge(int low, int middle, int high) {
 
-        // Copy both parts into the helper array
+        // Copia ambas partes en el arrehlo heper
         for (int i = low; i <= high; i++) {
-            helper[i] = numbers[i];
+            tempArray[i] = infoArray[i];
         }
 
         int i = low;
         int j = middle + 1;
         int k = low;
-        // Copy the smallest values from either the left or the right side back
-        // to the original array
+        // Copia los valores mas pequeños de ambos lados
+        // al arreglo original
         while (i <= middle && j <= high) {
-            if (helper[i] <= helper[j]) {
-                numbers[k] = helper[i];
+            if (tempArray[i] <= tempArray[j]) {
+                infoArray[k] = tempArray[i];
                 i++;
             } else {
-                numbers[k] = helper[j];
+                infoArray[k] = tempArray[j];
                 j++;
             }
             k++;
         }
-        // Copy the rest of the left side of the array into the target array
+        // copia el resto del arreglo
         while (i <= middle) {
-            numbers[k] = helper[i];
+            infoArray[k] = tempArray[i];
             k++;
             i++;
         }
-        // Since we are sorting in-place any leftover elements from the right side
-        // are already at the right position.
-
     }
 }
