@@ -8,7 +8,21 @@ public class Main {
     }
 
     public static void ReadFile(){
+        byte var1 = 10;
+        int[] var2 = new int[var1];
 
+        try {
+            FileReader var4 = new FileReader("./numeros.txt");
+            BufferedReader var5 = new BufferedReader(var4);
+
+            String var3;
+            for(int var6 = 0; (var3 = var5.readLine()) != null; ++var6) {
+                int var7 = Integer.parseInt(var3);
+                var2[var6] = var7;
+            }
+        } catch (Exception var10) {
+            System.out.println("Error al leer");
+        }
     }
 
     public static void WriteFile(String fileName){
