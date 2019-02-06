@@ -3,6 +3,11 @@ public class Main {
 
         WriteFile();
         ReadFile();
+
+        QuickSort q = new QuickSort();
+        q.Sorting(null, 0,0);
+
+
     }
 
     public static void ReadFile(){
