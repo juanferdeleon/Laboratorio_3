@@ -6,29 +6,30 @@ public class Main {
     public static void main(String[] args){
 
         WriteFile("./numeros.txt");
-        ReadFile();
+        ReadFile("./numeros.txt");
 
 //        QuickSort q = new QuickSort();
 //        q.Sorting(null, 0,0);
     }
 
-    public static void ReadFile(){
+    public static int[] ReadFile(String fileName){
 
-        ArrayList<Integer> infoArray = new ArrayList<>();
+        int[] infoArray = new int[2999];
 
         try {
-            FileReader fileReader = new FileReader("./numeros.txt");
+            FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line = bufferedReader.readLine();
+            int i = 0;
             while (line != null){
-                System.out.println(line);
-                infoArray.add(Integer.parseInt(line));
+                infoArray[i] = Integer.parseInt(line);
                 line = bufferedReader.readLine();
             }
         } catch (Exception var10) {
             System.out.println("Error al leer");
         }
+        return infoArray;
     }
 
     public static void WriteFile(String fileName){
