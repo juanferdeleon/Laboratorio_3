@@ -1,34 +1,30 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args){
 
-<<<<<<< HEAD
-        WriteFile();
+        WriteFile("./numeros.txt");
         ReadFile();
 
-        QuickSort q = new QuickSort();
-        q.Sorting(null, 0,0);
-
-
-=======
-        WriteFile("./numeros.txt");
->>>>>>> cb5500afce51910b2cb33966080fc7b95211fe5d
+//        QuickSort q = new QuickSort();
+//        q.Sorting(null, 0,0);
     }
 
     public static void ReadFile(){
-        byte var1 = 10;
-        int[] var2 = new int[var1];
+
+        ArrayList<Integer> infoArray = new ArrayList<>();
 
         try {
-            FileReader var4 = new FileReader("./numeros.txt");
-            BufferedReader var5 = new BufferedReader(var4);
+            FileReader fileReader = new FileReader("./numeros.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            String var3;
-            for(int var6 = 0; (var3 = var5.readLine()) != null; ++var6) {
-                int var7 = Integer.parseInt(var3);
-                var2[var6] = var7;
+            String line = bufferedReader.readLine();
+            while (line != null){
+                System.out.println(line);
+                infoArray.add(Integer.parseInt(line));
+                line = bufferedReader.readLine();
             }
         } catch (Exception var10) {
             System.out.println("Error al leer");
