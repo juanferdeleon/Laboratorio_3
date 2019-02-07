@@ -1,26 +1,29 @@
+import java.util.ArrayList;
+
 public class QuickSort<E> {
 
-    public int partition(int arr[], int low, int high) {
-        int pivot = arr[high];
+    private  List sortedList = new List();
+
+    private int partition(List arr, int low, int high) {
+        int pivot = arr.Pop(high);
         int i = (low - 1); // index of smaller element
         for (int j = low; j < high; j++) {
             // If current element is smaller than or
             // equal to pivot
-            if (arr[j] <= pivot) {
+            if (arr.Pop(j) <= pivot) {
                 i++;
 
                 // swap arr[i] and arr[j]
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                int temp = arr.Pop(i);
+                arr.Set(i, arr.Pop(j));
+                arr.Set(j, temp);
             }
         }
 
         // swap arr[i+1] and arr[high] (or pivot)
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
-
+        int temp = arr.Pop(i + 1);
+        arr.Set(i + 1, arr.Pop(high)) ;
+        arr.Set(high, temp);
         return i + 1;
     }
 
@@ -29,7 +32,7 @@ public class QuickSort<E> {
       arr[] --> Array to be sorted,
       low  --> Starting index,
       high  --> Ending index */
-    void sort(int arr[], int low, int high) {
+    public void sort(List arr, int low, int high) {
         if (low < high) {
             /* pi is partitioning index, arr[pi] is
               now at right place */
@@ -40,6 +43,11 @@ public class QuickSort<E> {
             sort(arr, low, pi - 1);
             sort(arr, pi + 1, high);
         }
+        sortedList = arr;
+    }
 
+    public List SortedList() {
+        return sortedList;
     }
 }
+

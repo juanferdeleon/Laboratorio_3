@@ -5,16 +5,26 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args){
 
-        WriteFile("./numeros.txt");
-        ReadFile("./numeros.txt");
+        List list = new List();
+        List sortedList = new List();
+        QuickSort qSort = new QuickSort();
+       WriteFile("./numeros.txt");
+       list = ReadFile("./numeros.txt");
+       qSort.sort(list, 0,  list.size() - 1);
+       sortedList = qSort.SortedList();
+        for (int i = 0; i < sortedList.size() ; i++) {
+            System.out.println(sortedList.Pop(i));
+        }
 
-//        QuickSort q = new QuickSort();
-//        q.Sorting(null, 0,0);
+
+
+
+
     }
 
-    public static int[] ReadFile(String fileName){
+    public static List ReadFile(String fileName){
 
-        int[] infoArray = new int[2999];
+        List infoArray =  new List();
 
         try {
             FileReader fileReader = new FileReader(fileName);
@@ -23,7 +33,7 @@ public class Main {
             String line = bufferedReader.readLine();
             int i = 0;
             while (line != null){
-                infoArray[i] = Integer.parseInt(line);
+                infoArray.Push(i, Integer.parseInt(line));
                 line = bufferedReader.readLine();
             }
         } catch (Exception var10) {
