@@ -2,29 +2,29 @@ import java.util.ArrayList;
 
 public class QuickSort<E> {
     private static GenericComparator comparator = new GenericComparator();
-    private static int partition(int data[], int left, int right)
+    private static int partition(ArrayList<Integer> data, int left, int right)
 // pre: left <= right
 // post: data[left] placed in the correct (returned) location
     {
         while (true)
         {
 // move right "pointer" toward left
-            while (comparator.compare(left, right) == -1 && comparator.compare(data[left], data[right]) == -1) right--;
+            while (comparator.compare(left, right) == -1 && comparator.compare(data.get(left), data.get(right)) == -1) right--;
             if (comparator.compare(left, right) == -1) swap(data,left++,right);
             else return left;
 // move left pointer toward right
-            while (comparator.compare(left, right) == -1 && comparator.compare(data[left], data[right]) == -1) left++;
+            while (comparator.compare(left, right) == -1 && comparator.compare(data.get(left), data.get(right)) == -1) left++;
             if ((comparator.compare(left, right) == -1)) swap(data,left++,right);
             else return right;
         }
     }
 
-    public static void quickSort(int data[], int n)
+    public static void quickSort(ArrayList data, int n)
 // post: the values in data[0..n-1] are in ascending order
     {
         quickSortRecursive(data,0,n-1);
     }
-    private static void quickSortRecursive(int data[],int left,int right)
+    private static void quickSortRecursive(ArrayList data ,int left,int right)
 // pre: left <= right
 // post: data[left..right] in ascending order
     {
@@ -36,14 +36,14 @@ public class QuickSort<E> {
         /* done! */
     }
 
-    public static void swap(int data[], int i, int j)
+    private static void swap(ArrayList<Integer> data , int i, int j)
 // pre: 0 <= i,j < data.length
 // post: data[i] and data[j] are exchanged
     {
         int temp;
-        temp = data[i];
-        data[i] = data[j];
-        data[j] = temp;
+        temp = data.get(i);
+        data.set(i, data.get(j));
+        data.set(j, temp);
     }
 }
 

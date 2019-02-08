@@ -17,7 +17,7 @@ class GnomeTest {
         result.add(4, 2);
 
         result = sort.gnomeSort(result);
-        Object[] isCompared = {1, 2, 25, 90, 34};
+        Object[] isCompared = {1, 2, 25, 34, 90};
 
         assertArrayEquals(result.toArray(), isCompared);
     }

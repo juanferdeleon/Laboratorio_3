@@ -20,7 +20,7 @@ class MergeTest {
         expected.add(8);
         expected.add(20);
 
-        infoArray = merge.sort(infoArray);
+        //infoArray = merge.sort(infoArray);
 
         assertArrayEquals(infoArray.toArray(), expected.toArray());
     }
