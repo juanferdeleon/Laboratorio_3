@@ -5,10 +5,14 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args){
 
-        int[] numbers =  {100, 1, 30, 90, 55};
-        Radix.radixsort(numbers, 5);
-        for (int i = 0; i < numbers.length ; i++) {
-            System.out.println(numbers[i]);
+        ArrayList<Integer> numbers = new ArrayList<>();
+        WriteFile("./Numbers.txt");
+        numbers = ReadFile("./Numbers.txt");
+        Gnome sort = new Gnome();
+        numbers =  sort.gnomeSort(numbers);
+
+        for (int i = 0; i < numbers.size() ; i++) {
+            System.out.println(numbers.get(i));
 
         }
 
@@ -18,9 +22,9 @@ public class Main {
 
 
 
-    public static int[] ReadFile(String fileName){
+    public static ArrayList ReadFile(String fileName){
 
-        int[] infoArray =  new int[300];
+        ArrayList infoArray =  new ArrayList();
 
         try {
             FileReader fileReader = new FileReader(fileName);
@@ -29,7 +33,7 @@ public class Main {
             String line = bufferedReader.readLine();
             int i = 0;
             while (line != null){
-                infoArray[i] =  Integer.parseInt(line);
+                infoArray.add(i, Integer.parseInt((line)));
                 line = bufferedReader.readLine();
                 i++;
             }
@@ -48,7 +52,7 @@ public class Main {
 
                 Random generator = new Random();
 
-                for (int i = 0; i <= 300; i++) {
+                for (int i = 0; i <= 3000; i++) {
                     int num = generator.nextInt(3000); //generate a random number
                     bw.write("" + num ); //write the number to the file
                     bw.newLine();
