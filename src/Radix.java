@@ -1,12 +1,13 @@
 import java.util.Arrays;
 
 public class Radix {
+    private static GenericComparator comparator = new GenericComparator();
     // A utility function to get maximum value in arr[]
     static int getMax(int arr[], int n)
     {
         int mx = arr[0];
         for (int i = 1; i < n; i++)
-            if (arr[i] > mx)
+            if (comparator.compare(arr[i], mx) == 1)
                 mx = arr[i];
         return mx;
     }

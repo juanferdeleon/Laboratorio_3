@@ -5,26 +5,22 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args){
 
-        List list = new List();
-        List sortedList = new List();
-        QuickSort qSort = new QuickSort();
-       WriteFile("./numeros.txt");
-       list = ReadFile("./numeros.txt");
-       qSort.sort(list, 0,  list.size() - 1);
-       sortedList = qSort.SortedList();
-        for (int i = 0; i < sortedList.size() ; i++) {
-            System.out.println(sortedList.Pop(i));
+        int[] numbers =  {100, 1, 30, 90, 55};
+        Radix.radixsort(numbers, 5);
+        for (int i = 0; i < numbers.length ; i++) {
+            System.out.println(numbers[i]);
+
         }
 
+   }
 
 
 
 
-    }
 
-    public static List ReadFile(String fileName){
+    public static int[] ReadFile(String fileName){
 
-        List infoArray =  new List();
+        int[] infoArray =  new int[300];
 
         try {
             FileReader fileReader = new FileReader(fileName);
@@ -33,11 +29,12 @@ public class Main {
             String line = bufferedReader.readLine();
             int i = 0;
             while (line != null){
-                infoArray.Push(i, Integer.parseInt(line));
+                infoArray[i] =  Integer.parseInt(line);
                 line = bufferedReader.readLine();
+                i++;
             }
         } catch (Exception var10) {
-            System.out.println("Error al leer");
+            System.out.println(var10);
         }
         return infoArray;
     }
@@ -51,7 +48,7 @@ public class Main {
 
                 Random generator = new Random();
 
-                for (int i = 0; i <= 3000; i++) {
+                for (int i = 0; i <= 300; i++) {
                     int num = generator.nextInt(3000); //generate a random number
                     bw.write("" + num ); //write the number to the file
                     bw.newLine();

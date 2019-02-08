@@ -1,53 +1,51 @@
 import java.util.ArrayList;
 
 public class QuickSort<E> {
-
-    private  List sortedList = new List();
-
-    private int partition(List arr, int low, int high) {
-        int pivot = arr.Pop(high);
-        int i = (low - 1); // index of smaller element
-        for (int j = low; j < high; j++) {
-            // If current element is smaller than or
-            // equal to pivot
-            if (arr.Pop(j) <= pivot) {
-                i++;
-
-                // swap arr[i] and arr[j]
-                int temp = arr.Pop(i);
-                arr.Set(i, arr.Pop(j));
-                arr.Set(j, temp);
-            }
+    private static GenericComparator comparator = new GenericComparator();
+    private static int partition(int data[], int left, int right)
+// pre: left <= right
+// post: data[left] placed in the correct (returned) location
+    {
+        while (true)
+        {
+// move right "pointer" toward left
+            while (comparator.compare(left, right) == -1 && comparator.compare(data[left], data[right]) == -1) right--;
+            if (comparator.compare(left, right) == -1) swap(data,left++,right);
+            else return left;
+// move left pointer toward right
+            while (comparator.compare(left, right) == -1 && comparator.compare(data[left], data[right]) == -1) left++;
+            if ((comparator.compare(left, right) == -1)) swap(data,left++,right);
+            else return right;
         }
-
-        // swap arr[i+1] and arr[high] (or pivot)
-        int temp = arr.Pop(i + 1);
-        arr.Set(i + 1, arr.Pop(high)) ;
-        arr.Set(high, temp);
-        return i + 1;
     }
 
-
-    /* The main function that implements QuickSort()
-      arr[] --> Array to be sorted,
-      low  --> Starting index,
-      high  --> Ending index */
-    public void sort(List arr, int low, int high) {
-        if (low < high) {
-            /* pi is partitioning index, arr[pi] is
-              now at right place */
-            int pi = partition(arr, low, high);
-
-            // Recursively sort elements before
-            // partition and after partition
-            sort(arr, low, pi - 1);
-            sort(arr, pi + 1, high);
-        }
-        sortedList = arr;
+    public static void quickSort(int data[], int n)
+// post: the values in data[0..n-1] are in ascending order
+    {
+        quickSortRecursive(data,0,n-1);
+    }
+    private static void quickSortRecursive(int data[],int left,int right)
+// pre: left <= right
+// post: data[left..right] in ascending order
+    {
+        int pivot; // the final location of the leftmost value
+        if (comparator.compare(left, right) == 1 || comparator.compare(left, right) == 0) return;
+        pivot = partition(data,left,right); /* 1 - place pivot */
+        quickSortRecursive(data,left,pivot-1); /* 2 - sort small */
+        quickSortRecursive(data,pivot+1,right);/* 3 - sort large */
+        /* done! */
     }
 
-    public List SortedList() {
-        return sortedList;
+    public static void swap(int data[], int i, int j)
+// pre: 0 <= i,j < data.length
+// post: data[i] and data[j] are exchanged
+    {
+        int temp;
+        temp = data[i];
+        data[i] = data[j];
+        data[j] = temp;
     }
 }
+
+
 
