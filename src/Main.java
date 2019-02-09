@@ -5,13 +5,30 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args){
 
-        Numbers[] numbers = new Numbers[4];
-        numbers[0] = new Numbers(2000);
-        numbers[1] = new Numbers(200);
-        numbers[2] = new Numbers(1);
-        numbers[3] = new Numbers(1);
+        WriteFile("../numbers.txt");
 
+        Numbers[] numbers = ReadFile("../numbers.txt");
+
+        //Gnome Sort
+        Gnome.gnomeSort(numbers);
+        numbers = ReadFile("../numbers.txt");
+
+        //Merge Sort
+        Merge.mergeSort(numbers, numbers.length);
+        numbers = ReadFile("../numbers.txt");
+
+        //Quick Sort
+        QuickSort.quickSort(numbers, numbers.length);
+        numbers = ReadFile("../numbers.txt");
+
+        //Radix Sort
         Radix.bucketPass(numbers, 5);
+        numbers = ReadFile("../numbers.txt");
+
+        //Bubble sort
+        Bubble.bubbleSort(numbers);
+        numbers = ReadFile("../numbers.txt");
+
 
         for (int i = 0; i < 4; i++) {
             System.out.println(numbers[i]);
