@@ -6,12 +6,12 @@ public class Main {
     public static void main(String[] args){
 
        Numbers[] numbers = new Numbers[4];
-       numbers[0] = new Numbers(20);
+       numbers[0] = new Numbers(2000);
        numbers[1] = new Numbers(200);
-       numbers[2] = new Numbers(45);
-       numbers[3] = new Numbers(20);
+       numbers[2] = new Numbers(1);
+       numbers[3] = new Numbers(1);
 
-       Radix.bucketPass(numbers, 4);
+       Radix.bucketPass(numbers, 5);
 
         for (int i = 0; i < 4; i++) {
             System.out.println(numbers[i]);
