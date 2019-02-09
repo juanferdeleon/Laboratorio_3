@@ -5,60 +5,58 @@
 
 public class Merge {
 
-    private int[] infoArray;
-    private int[] tempArray;
-
-    private int number;
-
-    public int[] sort(int[] values) {
-        this.infoArray = values;
-        number = values.length;
-        this.tempArray= new int[number];
-        mergesort(0, number - 1);
-        return this.infoArray;
-    }
-
-    private void mergesort(int low, int high) {
-        // Verifica si low es menor que high, sino ordena la lista.
-        if (low < high) {
-            // Obtiene el indice del valor central del arreglo.
-            int middle = low + (high - low) / 2;
-            // Ordena el lado izquierdo de la lista
-            mergesort(low, middle);
-            // Ordena el lado izquierdo de la lista
-            mergesort(middle + 1, high);
-            // Junta los dos arreglos
-            merge(low, middle, high);
-        }
-    }
-
-    private void merge(int low, int middle, int high) {
-
-        // Copia ambas partes en el arrehlo heper
-        for (int i = low; i <= high; i++) {
-            tempArray[i] = infoArray[i];
-        }
-
-        int i = low;
-        int j = middle + 1;
-        int k = low;
-        // Copia los valores mas pequeños de ambos lados
-        // al arreglo original
-        while (i <= middle && j <= high) {
-            if (tempArray[i] <= tempArray[j]) {
-                infoArray[k] = tempArray[i];
-                i++;
+    private static void merge(Comparable data[], Comparable temp[],
+                              int low, int middle, int high)
+    // pre: data[middle..high] are ascending
+    //      temp[low..middle-1] are ascending
+    // post: data[low..high] contains all values in ascending order
+    {
+        int ri = low; // result index
+        int ti = low; // temp index
+        int di = middle; // destination index
+        // while two lists are not empty merge smaller value
+        while (ti < middle && di <= high) {
+            if (data[di].compareTo(temp[ti]) == -1) {
+                data[ri++] = data[di++]; // smaller is in high data
             } else {
-                infoArray[k] = tempArray[j];
-                j++;
+                data[ri++] = temp[ti++]; // smaller is in temp
             }
-            k++;
         }
-        // copia el resto del arreglo
-        while (i <= middle) {
-            infoArray[k] = tempArray[i];
-            k++;
-            i++;
+        // possibly some values left in temp array
+
+        while (ti < middle) {
+            data[ri++] = temp[ti++];
         }
+// ...or some values left (in correct place) in data array
     }
+
+
+    public static void mergeSort(Comparable data[], int n)
+    // pre: 0 <= n <= data.length
+    // post: values in data[0..n-1] are in ascending order
+    {
+        mergeSortRecursive(data,new Comparable[n],0,n-1);
+    }
+
+    private static void mergeSortRecursive(Comparable data[], Comparable temp[], int low, int high)
+    // pre: 0 <= low <= high < data.length
+    // post: values in data[low..high] are in ascending order
+    {
+
+        int n = high - low + 1;
+        int middle = low + n / 2;
+        int i;
+        if (n < 2) return;
+// move lower half of data into temporary storage
+        for (i = low; i < middle; i++) {
+            temp[i] = data[i];
+        }
+        // sort lower half of array
+        mergeSortRecursive(temp, data, low, middle - 1);
+        // sort upper half of array
+        mergeSortRecursive(data, temp, middle, high);
+        // merge halves together
+        merge(data, temp, low, middle, high);
+    }
+
 }

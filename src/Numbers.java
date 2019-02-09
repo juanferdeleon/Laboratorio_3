@@ -3,7 +3,7 @@ public class Numbers implements Comparable{
     private int number;
 
     public Numbers(int number){
-        this.number = number;
+        this.number=number;
     }
 
     public int getNumber(){
