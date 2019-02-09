@@ -1,6 +1,14 @@
 import java.util.Vector;
 import java.io .*;
 import java.util .*;
+
+/***
+ * Universidad del Valle de Guatemala
+ * Estructuras de Datos
+ * Ing. Douglas Barrios
+ * @author Amado Garcia 181460 / Juan Fernando De Leon Quezada 17822
+ * E-Reference: Bailey(2007) Java Structures. This code was taken fromn this book
+ */
 public class Radix {
 
     private static int digit(Comparable n, int d)

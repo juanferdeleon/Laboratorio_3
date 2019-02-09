@@ -1,3 +1,11 @@
+
+/***
+ * Universidad del Valle de Guatemala
+ * Estructuras de Datos
+ * Ing. Douglas Barrios
+ * @author Amado Garcia 181460 / Juan Fernando De Leon Quezada 17822
+ * E-Reference: Bailey(2007) Java Structures. This code was taken fromn this book
+ */
 public class QuickSort {
     private static int partition(Comparable data[], int left, int right)
     // pre: left <= right

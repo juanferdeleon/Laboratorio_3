@@ -1,6 +1,13 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/***
+ * Universidad del Valle de Guatemala
+ * Estructuras de Datos
+ * Ing. Douglas Barrios
+ * @author Amado Garcia 181460 / Juan Fernando De Leon Quezada 17822
+ * E-Reference:
+ */
 public class Bubble {
 
 
