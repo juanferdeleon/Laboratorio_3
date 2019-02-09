@@ -5,28 +5,30 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args){
 
-        Numbers[] numbers = ReadFile("../numeros.txt");
+        Numbers[] numbers = new Numbers[4];
+        numbers[0] = new Numbers(2000);
+        numbers[1] = new Numbers(200);
+        numbers[2] = new Numbers(1);
+        numbers[3] = new Numbers(1);
 
-       Radix.bucketPass(numbers, numbers.length);
+        Radix.bucketPass(numbers, 5);
 
         for (int i = 0; i < 4; i++) {
             System.out.println(numbers[i]);
         }
 
-   }
+    }
 
-    public static Numbers[] ReadFile(String fileName){
+    public static ArrayList ReadFile(String fileName){
 
         ArrayList infoArray =  new ArrayList();
-        Numbers[] numbers;
-        int i = 0;
 
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line = bufferedReader.readLine();
-
+            int i = 0;
             while (line != null){
                 infoArray.add(i, Integer.parseInt((line)));
                 line = bufferedReader.readLine();
@@ -35,38 +37,31 @@ public class Main {
         } catch (Exception var10) {
             System.out.println(var10);
         }
-
-        numbers = new Numbers[i];
-
-        for (int j = 0; j <= i; j++){
-            numbers[i] = (Numbers)infoArray.get(i);
-        }
-
-        return numbers;
+        return infoArray;
     }
 
     public static void WriteFile(String fileName){
-            try{
+        try{
 
-                File fout = new File(fileName);
-                FileOutputStream fos = new FileOutputStream(fout);
-                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+            File fout = new File(fileName);
+            FileOutputStream fos = new FileOutputStream(fout);
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
 
-                Random generator = new Random();
+            Random generator = new Random();
 
-                for (int i = 0; i <= 3000; i++) {
-                    int num = generator.nextInt(3000); //generate a random number
-                    bw.write("" + num ); //write the number to the file
-                    bw.newLine();
-                }
-
-                bw.close();
-
+            for (int i = 0; i <= 3000; i++) {
+                int num = generator.nextInt(3000); //generate a random number
+                bw.write("" + num ); //write the number to the file
+                bw.newLine();
             }
 
-            catch (IOException e)
-            {
-                e.printStackTrace();
-            }
+            bw.close();
+
+        }
+
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }
