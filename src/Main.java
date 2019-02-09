@@ -19,16 +19,18 @@ public class Main {
 
     }
 
-    public static ArrayList ReadFile(String fileName){
+    public static Numbers[] ReadFile(String fileName){
 
         ArrayList infoArray =  new ArrayList();
+        Numbers[] numbers;
+        int i = 0;
 
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line = bufferedReader.readLine();
-            int i = 0;
+
             while (line != null){
                 infoArray.add(i, Integer.parseInt((line)));
                 line = bufferedReader.readLine();
@@ -37,7 +39,14 @@ public class Main {
         } catch (Exception var10) {
             System.out.println(var10);
         }
-        return infoArray;
+
+        numbers = new Numbers[i];
+
+        for (int j = 0; j <= i; j++){
+            numbers[i] = (Numbers)infoArray.get(i);
+        }
+
+        return numbers;
     }
 
     public static void WriteFile(String fileName){
