@@ -15,6 +15,7 @@ public class Main {
             Comparable[] numbers = ReadFile("./Numbers.txt");
 
             System.out.println("Select the Sort: ");
+            System.out.println(MainMenu());
             String option = readLine.nextLine();
             switch (option) {
                 case "1":
@@ -34,8 +35,8 @@ public class Main {
                     Bubble.bubbleSort(numbers);
                     break;
                 default:
-                    System.out.println("Non valid option ");
-                    break;
+                    System.out.println("Bye");
+                    return;
             }
             for (int i = 0; i < numbers.length ; i++) {
                 System.out.println("[" + (i + 1) + "]" + numbers[i]);
@@ -71,6 +72,15 @@ public class Main {
 
     }
 
+    public static String MainMenu(){
+        return
+                "1. Gnome Sort\n" +
+                "2. Merge Sort\n" +
+                "3. Quick Sort\n" +
+                "4. Radix Sort\n" +
+                "5. Bubble Sort\n" +
+                "Pres any other button to exit" ;
+    }
 
     public static void WriteFile(String fileName){
         try{
