@@ -5,15 +5,14 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args){
 
-        ArrayList<Integer> numbers = new ArrayList<>();
-        WriteFile("./Numbers.txt");
-        numbers = ReadFile("./Numbers.txt");
-        Gnome sort = new Gnome();
-        numbers =  sort.gnomeSort(numbers);
+       Numbers[] numbers = new Numbers[3000];
+        for (int i = 0; i < 3000; i++) {
+            numbers[i] = new Numbers(3);
+        }
+       Bubble.bubbleSort(numbers);
 
-        for (int i = 0; i < numbers.size() ; i++) {
-            System.out.println(numbers.get(i));
-
+        for (int i = 0; i < 3; i++) {
+            System.out.println(numbers[i]);
         }
 
    }
