@@ -1,39 +1,50 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
 
-        WriteFile("./Numbers.txt");
-        Comparable[] numbers = ReadFile("./Numbers.txt");
+        Scanner readLine = new Scanner(System.in);
 
-        //Gnome Sort
-        Gnome.gnomeSort(numbers);
-        numbers = ReadFile("../numbers.txt");
-
-        //Merge Sort
-        Merge.mergeSort(numbers, numbers.length);
-        numbers = ReadFile("../numbers.txt");
-
-        //Quick Sort
-        QuickSort.quickSort(numbers, numbers.length);
-        numbers = ReadFile("../numbers.txt");
-
-        //Radix Sort
-        Radix.bucketPass(numbers, 5);
-        numbers = ReadFile("../numbers.txt");
-
-        //Bubble sort
-        Bubble.bubbleSort(numbers);
-        numbers = ReadFile("../numbers.txt");
+        while (true) {
 
 
-        Merge.mergeSort(numbers, 3000);
-        for (int i = 0; i <  numbers.length; i++) {
-            System.out.println("{ " +numbers[i] + " }" );
+            WriteFile("./Numbers.txt");
+            Comparable[] numbers = ReadFile("./Numbers.txt");
+
+            System.out.println("Select the Sort: ");
+            String option = readLine.nextLine();
+            switch (option) {
+                case "1":
+                    Gnome.gnomeSort(numbers);
+
+                    break;
+                case "2":
+                    Merge.mergeSort(numbers, numbers.length);
+                    break;
+                case "3":
+                    QuickSort.quickSort(numbers, numbers.length);
+                    break;
+                case "4":
+                    Radix.bucketPass(numbers, numbers.length);
+                    break;
+                case "5":
+                    Bubble.bubbleSort(numbers);
+                    break;
+                default:
+                    System.out.println("Non valid option ");
+                    break;
+            }
+            for (int i = 0; i < numbers.length ; i++) {
+                System.out.println("[" + (i + 1) + "]" + numbers[i]);
+            }
         }
+
     }
+
+
 
     public static Comparable[] ReadFile(String fileName) {
 
@@ -44,7 +55,7 @@ public class Main {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            String line = bufferedReader.readLine();
+            String line = bufferedReader.readLine().trim();
 
             while (line != null) {
                 line = bufferedReader.readLine();
@@ -53,9 +64,8 @@ public class Main {
                 i++;
             }
         } catch (Exception var10) {
-            System.out.println(var10);
-        }
 
+        }
 
             return numbers;
 
