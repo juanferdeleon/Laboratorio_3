@@ -6,22 +6,16 @@ class MergeTest {
 
     @org.junit.jupiter.api.Test
     void sort() {
-        Merge merge = new Merge();
-        ArrayList<Integer> infoArray = new ArrayList<>();
-        infoArray.add(2);
-        infoArray.add(6);
-        infoArray.add(10);
-        infoArray.add(8);
-        infoArray.add(20);
-        ArrayList<Integer> expected = new ArrayList<>();
-        expected.add(2);
-        expected.add(6);
-        infoArray.add(10);
-        expected.add(8);
-        expected.add(20);
+        Comparable[] result = new Comparable[3];
+        result[0] = new Numbers(10);
+        result[1] = new Numbers(25);
+        result[2] = new Numbers(2);
+        Merge.mergeSort(result, 3);
+        for (int i = 0; i < result.length; i++) {
+            result[i] = Integer.parseInt(String.valueOf(result[i]).trim());
+        }
+        Object[] expected = {2, 10, 25};
 
-        //infoArray = merge.sort(infoArray);
-
-        assertArrayEquals(infoArray.toArray(), expected.toArray());
+        assertArrayEquals(expected, result);
     }
 }
