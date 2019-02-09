@@ -3,7 +3,7 @@ import java.io .*;
 import java.util .*;
 public class Radix {
 
-    public static int digit(Comparable n, int d)
+    private static int digit(Comparable n, int d)
     // pre: n >= 0 and d >= 0
     // post: returns the value of the dth decimal place of n
     //  where the units place has position 0
@@ -50,7 +50,7 @@ public class Radix {
             }
         }
     }
-    public static void radixSort(Comparable data[])
+    private static void radixSort(Comparable data[])
     // pre: data is array of values; each is less than 1,000,000
     // post: data in the array are sorted into increasing order
     {
