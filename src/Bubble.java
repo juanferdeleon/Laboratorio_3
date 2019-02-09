@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Estructuras de Datos
  * Ing. Douglas Barrios
  * @author Amado Garcia 181460 / Juan Fernando De Leon Quezada 17822
- * E-Reference:
+ * E-Reference: GeeksForGeeks (S.F) This code was Taken from : https://www.geeksforgeeks.org/java-program-for-bubble-sort/
  */
 public class Bubble {
 
