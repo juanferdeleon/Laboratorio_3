@@ -5,9 +5,36 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args){
 
+<<<<<<< HEAD
         WriteFile("./Numbers.txt");
         Comparable[] numbers = ReadFile("./Numbers.txt");
 
+=======
+        WriteFile("../numbers.txt");
+
+        Numbers[] numbers = ReadFile("../numbers.txt");
+
+        //Gnome Sort
+        Gnome.gnomeSort(numbers);
+        numbers = ReadFile("../numbers.txt");
+
+        //Merge Sort
+        Merge.mergeSort(numbers, numbers.length);
+        numbers = ReadFile("../numbers.txt");
+
+        //Quick Sort
+        QuickSort.quickSort(numbers, numbers.length);
+        numbers = ReadFile("../numbers.txt");
+
+        //Radix Sort
+        Radix.bucketPass(numbers, 5);
+        numbers = ReadFile("../numbers.txt");
+
+        //Bubble sort
+        Bubble.bubbleSort(numbers);
+        numbers = ReadFile("../numbers.txt");
+
+>>>>>>> 8eeb903d8f5c233097ffb3ba59e44bbce4d33b90
 
         Merge.mergeSort(numbers, 3000);
         for (int i = 0; i <  numbers.length; i++) {
