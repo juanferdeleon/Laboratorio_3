@@ -11,14 +11,23 @@ import java.util.Scanner;
  */
 public class Main {
     public static void main(String[] args){
+
+        //Used to read the options
         Scanner readLine = new Scanner(System.in);
+
+        //Bucle used to repeat the menu until the user exits
         while (true) {
+            //Reads and writes the .txt doc
             WriteFile("./Numbers.txt");
             Comparable[] numbers = ReadFile("./Numbers.txt");
-
+            //--------------------------------------------
+            //Menu Area
             System.out.println("Select the Sort: ");
             System.out.println(MainMenu());
             String option = readLine.nextLine();
+            //-----------------------------------
+
+            //Switch loop used to select a different sort
             switch (option) {
                 case "1":
                     Gnome.gnomeSort(numbers);
@@ -40,6 +49,8 @@ public class Main {
                     System.out.println("Bye");
                     return;
             }
+
+            //Prints the ordered Numbers
             for (int i = 0; i < numbers.length ; i++) {
                 System.out.println("[" + (i + 1) + "]" + numbers[i]);
             }
