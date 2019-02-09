@@ -3,26 +3,26 @@ import java.util.ArrayList;
 
 public class Gnome {
 
-    public ArrayList<Integer> gnomeSort(ArrayList<Integer> infoArray){
+    public  static void gnomeSort(Comparable[] infoArray){
 
-        for (int i = 1; i < infoArray.size();){
+        for (int i = 1; i < infoArray.length;){
 
-            if (infoArray.get(i - 1) <= infoArray.get(i))
+            if (infoArray[i-1].compareTo(infoArray[i]) <= 0){
                 ++i;
+            } else {
 
-            else {
-
-                int tempValue = infoArray.get(i);
-                infoArray.set(i, infoArray.get(i -1));
-                infoArray.set(i -1, tempValue);
+                Comparable tempValue = infoArray[i];
+                infoArray[i] = infoArray[i -1];
+                infoArray[i -1] = tempValue;
                 --i;
 
-                if (i == 0)
+                if (i == 0){
                     i = 1;
+                }
+
 
             }
         }
-        return infoArray;
     }
 
 }

@@ -5,13 +5,15 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args){
 
-       Numbers[] numbers = new Numbers[3000];
-        for (int i = 0; i < 3000; i++) {
-            numbers[i] = new Numbers(3);
-        }
-       Bubble.bubbleSort(numbers);
+       Numbers[] numbers = new Numbers[4];
+       numbers[0] = new Numbers(25);
+       numbers[1] = new Numbers(2000);
+       numbers[2] = new Numbers(20);
+       numbers[3] = new Numbers(1);
 
-        for (int i = 0; i < 3; i++) {
+       Gnome.gnomeSort(numbers);
+
+        for (int i = 0; i < 4; i++) {
             System.out.println(numbers[i]);
         }
 
