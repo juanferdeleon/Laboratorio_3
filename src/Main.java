@@ -3,14 +3,16 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+/***
+ * Universidad del Valle de Guatemala
+ * Estructuras de Datos
+ * Ing. Douglas Barrios
+ * @author Amado Garcia 181460 / Juan Fernando De Leon Quezada 17822
+ */
 public class Main {
     public static void main(String[] args){
-
         Scanner readLine = new Scanner(System.in);
-
         while (true) {
-
-
             WriteFile("./Numbers.txt");
             Comparable[] numbers = ReadFile("./Numbers.txt");
 
@@ -46,8 +48,16 @@ public class Main {
     }
 
 
+    /**
+     * Method used to Read the .txt file in the requested location
+     * @param fileName Valid Path for .txt file
+     * @return Comparable array
+     */
+    public static Comparable[] ReadFile(String fileName)
+            //pre: A valid File Path
+            //Post: A non null Comparable Array
+    {
 
-    public static Comparable[] ReadFile(String fileName) {
 
         Comparable[] numbers = new Numbers[3000];
         int i = 0;
@@ -72,6 +82,10 @@ public class Main {
 
     }
 
+    /**
+     * Mein Menu Method
+     * @return A String with the Main Menu
+     */
     public static String MainMenu(){
         return
                 "1. Gnome Sort\n" +
@@ -82,7 +96,14 @@ public class Main {
                 "Pres any other button to exit" ;
     }
 
-    public static void WriteFile(String fileName){
+
+    /**
+     * Creates or writes 3000 random numbers from 0 to 3000 in a .txt file
+     * @param fileName A String path where the .txt is.
+     */
+    public static void WriteFile(String fileName)
+    //Pre: A valid File Path
+    {
         try{
 
             File fout = new File(fileName);
